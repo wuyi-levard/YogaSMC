@@ -95,7 +95,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="axU-ua-ace">
-                                            <rect key="frame" x="15" y="270" width="37" height="16"/>
+                                            <rect key="frame" x="15" y="270" width="44" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="设备类" id="ae1-hP-n4N">
                                                 <font key="font" usesAppearanceFont="YES"/>
@@ -379,7 +379,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0RV-HA-nag">
-                                            <rect key="frame" x="15" y="165" width="121" height="18"/>
+                                            <rect key="frame" x="15" y="165" width="130" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="隐藏大写锁定提示" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="s22-X0-HDH">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -401,7 +401,7 @@
                                             </connections>
                                         </button>
                                         <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bgC-Ln-QG2">
-                                            <rect key="frame" x="382" y="135" width="103" height="18"/>
+                                            <rect key="frame" x="382" y="135" width="106" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" title="PSC 平台支持" bezelStyle="regularSquare" imagePosition="left" inset="2" id="DxG-IC-0u8">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -477,7 +477,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="alV-ed-O4q">
-                                                    <rect key="frame" x="-2" y="30" width="47" height="16"/>
+                                                    <rect key="frame" x="-2" y="30" width="56" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="蜂窝网络" id="NPM-bu-eu9">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -980,7 +980,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="ruD-oV-MTI">
-                                                        <rect key="frame" x="18" y="187" width="25" height="16"/>
+                                                        <rect key="frame" x="18" y="187" width="31" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="主要" id="qXt-z1-VEB">
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -1098,7 +1098,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n3n-Iq-zXz">
-                                                    <rect key="frame" x="-2" y="-1" width="79" height="18"/>
+                                                    <rect key="frame" x="-2" y="-1" width="84" height="18"/>
                                                     <buttonCell key="cell" type="check" title="麦克风静音" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="t1g-Vf-YH6">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
