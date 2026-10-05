@@ -421,12 +421,16 @@ void IdeaVPC::updateBatteryCapability() {
         conservationModeLock = true;
     }
 
-    if (updateBatteryID(bat0, bat1) && updateBatteryInfo(bat0, bat1)) {
-        if (bat0->getCount())
-            setProperty("Battery 0", bat0);
-        if (bat1->getCount())
-            setProperty("Battery 1", bat1);
-    }
+    // Neither may gate the other: GBID is absent on some firmware, but GSBI on
+    // the same machine still carries the per-battery temperature and manufacture
+    // date, so an && here discarded data the driver had actually read.
+    updateBatteryID(bat0, bat1);
+    updateBatteryInfo(bat0, bat1);
+
+    if (bat0->getCount())
+        setProperty("Battery 0", bat0);
+    if (bat1->getCount())
+        setProperty("Battery 1", bat1);
     bat0->release();
     bat1->release();
 }

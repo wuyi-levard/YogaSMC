@@ -44,9 +44,13 @@ enum {
     CFG_WIFI_BIT, /* 18 */
     CFG_CAMERA_BIT, /* 19 */
     CFG_USER_BUTTON_3BIT, /* 20 */
-    CFG_COLOR_ENGINE_BIT, /* 23 */
+    // A multi-bit field has to be followed by an explicit value, or the next
+    // entry silently reuses the bits it spans. Without the two assignments
+    // below, everything from COLOR_ENGINE down shifted toward bit 0 and
+    // CFG_TOUCHPAD_BIT read 27 instead of 30.
+    CFG_COLOR_ENGINE_BIT = 23,
     CFG_PRODUCT_INFO_2BIT, /* 24 */
-    CFG_TOUCHPAD_OSD_BIT, /* 26 */
+    CFG_TOUCHPAD_OSD_BIT = 26,
     CFG_NUMLK_OSD_BIT, /* 27 */
     CFG_CAPSLK_OSD_BIT, /* 28 */
     CFG_MIC_OSD_BIT, /* 29 */
