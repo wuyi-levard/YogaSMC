@@ -224,6 +224,7 @@
 		6F1C708C251473BB007D1DFC /* YogaSMCPane.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YogaSMCPane.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F1C7092251473BB007D1DFC /* YogaSMCPane.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = YogaSMCPane.icns; sourceTree = "<group>"; };
 		6F1C7095251473BB007D1DFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/YogaSMCPane.xib; sourceTree = "<group>"; };
+		6F1C7096251473BB007D1DFB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/YogaSMCPane.xib"; sourceTree = "<group>"; };
 		6F1C7097251473BB007D1DFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F1C709F251473CD007D1DFC /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		6F1C70A1251473DF007D1DFC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.0.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -238,6 +239,7 @@
 		6F48676124A293A0003AD4CA /* IdeaWMI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IdeaWMI.cpp; sourceTree = "<group>"; };
 		6F48676224A293A0003AD4CA /* IdeaWMI.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IdeaWMI.hpp; sourceTree = "<group>"; };
 		6F53F8392564C51F00CC4140 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6F53F83B2564C51F00CC4140 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		6F5FA080290679FB00267678 /* YogaSMCNC.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = YogaSMCNC.icns; sourceTree = "<group>"; };
 		6F64A28125A7FA7D00070265 /* DYVPC.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DYVPC.cpp; sourceTree = "<group>"; };
 		6F64A28225A7FA7D00070265 /* DYVPC.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DYVPC.hpp; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 6F08ACDA24746B8B00681A63;
 			productRefGroup = 6F08ACE524746B8B00681A63 /* Products */;
@@ -1038,6 +1041,7 @@
 		6F1C7094251473BB007D1DFC /* YogaSMCPane.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
+				6F1C7096251473BB007D1DFB /* zh-Hans */,
 				6F1C7095251473BB007D1DFC /* Base */,
 			);
 			name = YogaSMCPane.xib;
@@ -1046,6 +1050,7 @@
 		6F53F83A2564C51F00CC4140 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
+				6F53F83B2564C51F00CC4140 /* zh-Hans */,
 				6F53F8392564C51F00CC4140 /* en */,
 			);
 			name = Localizable.strings;

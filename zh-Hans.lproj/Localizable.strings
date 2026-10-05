@@ -1,0 +1,122 @@
+/*
+  Localizable.strings
+  YogaSMC
+
+  Simplified Chinese (zh-Hans) localization.
+  Base language (en) stays untouched in en.lproj/ — this file only adds a
+  translation, so the UI follows the system language and falls back to
+  English on non-Chinese systems.
+*/
+
+// OSD Warning
+"ConnectFail" = "无法连接 YogaSMC";
+"AlreadyConnected" = "已有另一个实例\n连接到 YogaSMC";
+"YogaSMC Unavailable" = "YogaSMC 不可用";
+"Unknown Version" = "未知版本";
+"ECAccessUnavailable" = "EC 访问不可用！\n请查看 SSDT-ECRW.dsl";
+"Unknown Class" = "未知设备类";
+"MoveApp" = "请将本程序移入\n「应用程序」文件夹";
+
+// Menu
+"ClassVar" = "设备类：";
+"Preferences" = "偏好设置";
+"Start at Login" = "开机时启动";
+
+// Event name
+// Idea
+"Special Button" = "特殊按键";
+"Fn-Q Cooling" = "Fn+Q 散热增强";
+"Keyboard Backlight" = "键盘背光";
+"Screen Off" = "关闭屏幕";
+"Screen On" = "开启屏幕";
+"TouchPad Off" = "关闭触控板";
+"TouchPad On" = "开启触控板";
+"Switch Video" = "切换视频输出";
+"Camera" = "摄像头";
+"Mic Mute" = "麦克风静音";
+"Yoga Mode" = "瑜伽模式";
+"Laptop Mode" = "笔记本模式";
+"Tablet Mode" = "平板模式";
+"Stand Mode" = "立架模式";
+"Tent Mode" = "帐篷模式";
+"FnKey" = "";
+"Caps Lock" = "大写锁定";
+// Think
+"Sleep" = "睡眠";
+"Second Display" = "副屏显示";
+"Brightness Up" = "提高亮度";
+"Brightness Down" = "降低亮度";
+"Settings" = "系统设置";
+"Search" = "聚焦搜索";
+"Mission Control" = "调度中心";
+"Launchpad" = "启动台";
+"Custom Hotkey" = "自定义快捷键";
+"Bluetooth" = "蓝牙";
+"Keyboard" = "";
+"LID Close" = "合盖";
+"LID Open" = "开盖";
+"Thermal Table Change" = "散热模式切换";
+"Thermal Control Change" = "温控策略切换";
+"AC Status Change" = "电源状态变化";
+"Backlight Changed" = "背光状态变化";
+"FnLock" = " Fn 锁定";
+"Palm Detected" = "检测到掌托";
+"Palm Undetected" = "掌托离开";
+"Thermal Changed" = "温度变化";
+// HIDD
+"STOPCD" = "停止光盘";
+"Rotate Lock" = "屏幕旋转锁定";
+"Convertible" = "二合一模式";
+
+// OSD Res
+"On" = "开";
+"Off" = "关";
+"Low" = "低";
+"High" = "高";
+"Enabled" = "已启用";
+"Disabled" = "已禁用";
+"Unavailable" = "不可用";
+"Toggle failed" = "切换失败";
+
+"Backlight" = "背光";
+"EventVar" = "事件 ";
+
+// Helper
+"OpenFail" = "无法打开 ";
+
+// Date
+"New Year" = "元旦";
+"Valentine's Day" = "情人节";
+"Saint Patrick's Day" = "圣帕特里克节";
+"Easter" = "复活节";
+"Halloween" = "万圣节";
+"Thanksgiving" = "感恩节";
+"Christmas Eve" = "平安夜";
+"Christmas Day" = "圣诞节";
+"New Year's Eve" = "除夕";
+
+// RF
+"Bluetooth" = "蓝牙";
+"BT Discoverable" = "蓝牙可被发现";
+"Wireless" = "无线网络";
+"Airplane Mode" = "飞行模式";
+
+// Audio
+"Mic" = "麦克风";
+"Mute" = "静音";
+"Unmute" = "取消静音";
+
+// Script
+"AppleEventAccess" = "请授予\n自动化访问权限";
+
+// ThinkFan
+"Auto" = "自动";
+"Main" = "主风扇";
+"ReadFanFail" = "读取风扇转速失败！";
+"WriteFanFail" = "写入风扇转速失败！";
+"Main: %d rpm" = "主风扇：%d 转/分";
+"Alt: %d rpm" = "副风扇：%d 转/分";
+
+// Idea control (added in 0d1c4e0)
+"Always On USB" = "USB 常供电";
+"Battery Conservation" = "电池养护模式";
