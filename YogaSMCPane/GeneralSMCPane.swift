@@ -41,25 +41,29 @@ extension YogaSMCPane {
     }
 
     @IBAction func autoBacklightSet(_ sender: NSButton) {
+        // indicatorCheck, muteCheck and micMuteCheck live in the Think tab, which
+        // willSelect() removes on machines that report IdeaVPC or YogaHIDD.
+        // Removing a tab view item releases its view, and every outlet into that
+        // view is a weak reference, so they are nil from the second selection on.
         let val = ((autoSleepCheck.state == .on) ? 1 << 0 : 0) +
                 ((yogaModeCheck.state == .on) ? 1 << 1 : 0) +
-                ((indicatorCheck.state == .on) ? 1 << 2 : 0) +
-                ((muteCheck.state == .on) ? 1 << 3 : 0) +
-                ((micMuteCheck.state == .on) ? 1 << 4 : 0)
+                ((indicatorCheck?.state == .on) ? 1 << 2 : 0) +
+                ((muteCheck?.state == .on) ? 1 << 3 : 0) +
+                ((micMuteCheck?.state == .on) ? 1 << 4 : 0)
         if !sendNumber("AutoBacklight", val, service) {
             let autoBacklight = getNumber("AutoBacklight", service)
             if autoBacklight != -1 {
                 autoSleepCheck.state = ((autoBacklight & (1 << 0)) != 0) ? .on : .off
                 yogaModeCheck.state =  ((autoBacklight & (1 << 1)) != 0) ? .on : .off
-                indicatorCheck.state =  ((autoBacklight & (1 << 2)) != 0) ? .on : .off
-                muteCheck.state =  ((autoBacklight & (1 << 3)) != 0) ? .on : .off
-                micMuteCheck.state =  ((autoBacklight & (1 << 4)) != 0) ? .on : .off
+                indicatorCheck?.state =  ((autoBacklight & (1 << 2)) != 0) ? .on : .off
+                muteCheck?.state =  ((autoBacklight & (1 << 3)) != 0) ? .on : .off
+                micMuteCheck?.state =  ((autoBacklight & (1 << 4)) != 0) ? .on : .off
             } else {
                 autoSleepCheck.isEnabled = false
                 yogaModeCheck.isEnabled = false
-                indicatorCheck.isEnabled = false
-                muteCheck.isEnabled = false
-                micMuteCheck.isEnabled = false
+                indicatorCheck?.isEnabled = false
+                muteCheck?.isEnabled = false
+                micMuteCheck?.isEnabled = false
             }
         }
     }
@@ -131,24 +135,29 @@ extension YogaSMCPane {
     }
 
     func updateMain(_ props: NSDictionary) {
+        // The three Think-tab checks are nil once that tab has been removed; see
+        // autoBacklightSet(). updateMain() runs for every driver class, so without
+        // the optional chaining an Idea or HIDD machine crashes on re-selection.
         if let val = props["AutoBacklight"] as? NSNumber {
             let autoBacklight = val.intValue
             autoSleepCheck.state = ((autoBacklight & (1 << 0)) != 0) ? .on : .off
             yogaModeCheck.state =  ((autoBacklight & (1 << 1)) != 0) ? .on : .off
-            indicatorCheck.state =  ((autoBacklight & (1 << 2)) != 0) ? .on : .off
-            muteCheck.state =  ((autoBacklight & (1 << 3)) != 0) ? .on : .off
-            micMuteCheck.state =  ((autoBacklight & (1 << 4)) != 0) ? .on : .off
+            indicatorCheck?.state =  ((autoBacklight & (1 << 2)) != 0) ? .on : .off
+            muteCheck?.state =  ((autoBacklight & (1 << 3)) != 0) ? .on : .off
+            micMuteCheck?.state =  ((autoBacklight & (1 << 4)) != 0) ? .on : .off
         } else {
             autoSleepCheck.isEnabled = false
             yogaModeCheck.isEnabled = false
-            indicatorCheck.isEnabled = false
-            micMuteCheck.isEnabled = false
+            indicatorCheck?.isEnabled = false
+            micMuteCheck?.isEnabled = false
         }
         #if !DEBUG
-        muteCheck.isEnabled = false
-        if muteCheck.state == .on {
-            muteCheck.state = .off
-            autoBacklightSet(muteCheck)
+        if let muteCheck = muteCheck {
+            muteCheck.isEnabled = false
+            if muteCheck.state == .on {
+                muteCheck.state = .off
+                autoBacklightSet(muteCheck)
+            }
         }
         #endif
 

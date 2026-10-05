@@ -173,27 +173,52 @@ class YogaSMCPane: NSPreferencePane {
 
         updateMain(props)
 
+        // The Idea and Think tabs only make sense for their own driver, so the other
+        // one is removed on the first pass. Removing a tab view item releases the view
+        // it held, and every outlet into that view is a weak reference, so from the
+        // second willSelect onwards updateIdea() and updateThink() would walk into
+        // implicitly unwrapped nils and take the helper process down with them.
+        // Latch which tabs are still around and only act on those.
+        let ideaAlive = ideaViewItem != nil
+        let thinkAlive = thinkViewItem != nil
+
         switch props["IOClass"] as? NSString {
         case "IdeaVPC":
             vClass.stringValue = "Idea"
-            updateIdea(props)
+            if ideaAlive {
+                updateIdea(props)
+            }
             #if !DEBUG
-            mainTabView.removeTabViewItem(thinkViewItem)
+            if thinkAlive {
+                mainTabView.removeTabViewItem(thinkViewItem)
+            }
             #endif
         case "ThinkVPC":
             vClass.stringValue = "Think"
-            updateThink(props)
+            if thinkAlive {
+                updateThink(props)
+            }
             #if !DEBUG
-            mainTabView.removeTabViewItem(ideaViewItem)
+            if ideaAlive {
+                mainTabView.removeTabViewItem(ideaViewItem)
+            }
             #endif
         case "YogaHIDD":
             vClass.stringValue = "HIDD"
-            mainTabView.removeTabViewItem(ideaViewItem)
-            mainTabView.removeTabViewItem(thinkViewItem)
+            if ideaAlive {
+                mainTabView.removeTabViewItem(ideaViewItem)
+            }
+            if thinkAlive {
+                mainTabView.removeTabViewItem(thinkViewItem)
+            }
         default:
             vClass.stringValue = "Unsupported"
-            mainTabView.removeTabViewItem(ideaViewItem)
-            mainTabView.removeTabViewItem(thinkViewItem)
+            if ideaAlive {
+                mainTabView.removeTabViewItem(ideaViewItem)
+            }
+            if thinkAlive {
+                mainTabView.removeTabViewItem(thinkViewItem)
+            }
         }
     }
 }
