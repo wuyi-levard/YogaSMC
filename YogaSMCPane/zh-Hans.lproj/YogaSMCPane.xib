@@ -138,7 +138,7 @@
                                                 <action selector="backlightSet:" target="-2" id="27z-74-0Qz"/>
                                             </connections>
                                         </slider>
-                                        <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUj-yU-hOj">
+                                        <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="18" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qUj-yU-hOj">
                                             <rect key="frame" x="229" y="220" width="115" height="16"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hgp-2E-aYA">
@@ -166,6 +166,9 @@
                                                     </textFieldCell>
                                                 </textField>
                                             </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="115" id="Zhw1-aa-bbb"/>
+</constraints>
                                             <visibilityPriorities>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
@@ -216,8 +219,8 @@
                                                 <action selector="DYTCset:" target="-2" id="Nwh-cW-Bdz"/>
                                             </connections>
                                         </slider>
-                                        <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GFv-8A-ptH">
-                                            <rect key="frame" x="381" y="170" width="200" height="16"/>
+                                        <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="9" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GFv-8A-ptH">
+                                            <rect key="frame" x="390" y="170" width="160" height="16"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ggk-xz-8kl">
                                                     <rect key="frame" x="-2" y="0.0" width="37" height="16"/>
@@ -244,6 +247,9 @@
                                                     </textFieldCell>
                                                 </textField>
                                             </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="160" id="Zhw2-aa-bbb"/>
+</constraints>
                                             <visibilityPriorities>
                                                 <integer value="1000"/>
                                                 <integer value="1000"/>
@@ -671,7 +677,7 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="io5-Gb-nnj">
+                                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="io5-Gb-nnj">
                                                         <rect key="frame" x="105" y="200" width="135" height="16"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d7f-F4-3Ub">
@@ -707,6 +713,9 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                         </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="132" id="Zhw3-01-bbb"/>
+</constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
@@ -728,7 +737,7 @@
                                                             <action selector="vPowerLEDSet:" target="-2" id="hHQ-6b-2fj"/>
                                                         </connections>
                                                     </slider>
-                                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mro-Fx-S6O">
+                                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mro-Fx-S6O">
                                                         <rect key="frame" x="105" y="140" width="135" height="16"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0QS-b9-gBb">
@@ -764,6 +773,9 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                         </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="132" id="Zhw3-02-bbb"/>
+</constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
@@ -785,7 +797,7 @@
                                                             <action selector="vStandbyLEDSet:" target="-2" id="KKZ-b3-GMv"/>
                                                         </connections>
                                                     </slider>
-                                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJz-yA-LS6">
+                                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HJz-yA-LS6">
                                                         <rect key="frame" x="105" y="80" width="135" height="16"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MLI-gy-dCc">
@@ -821,6 +833,9 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                         </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="132" id="Zhw3-03-bbb"/>
+</constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
@@ -842,7 +857,7 @@
                                                             <action selector="vThinkDotSet:" target="-2" id="zbs-Cj-HhV"/>
                                                         </connections>
                                                     </slider>
-                                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpW-Fr-EMN">
+                                                    <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpW-Fr-EMN">
                                                         <rect key="frame" x="105" y="30" width="135" height="16"/>
                                                         <subviews>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zvh-nC-JD9">
@@ -878,6 +893,9 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                         </subviews>
+<constraints>
+    <constraint firstAttribute="width" constant="132" id="Zhw3-04-bbb"/>
+</constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
                                                             <integer value="1000"/>
