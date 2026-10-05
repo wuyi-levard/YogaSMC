@@ -23,8 +23,6 @@
                 <outlet property="vBackLightTimeout" destination="fps-Vx-bqD" id="b4q-Rc-D31"/>
                 <outlet property="vBatteryID" destination="rTr-ll-Qx5" id="4nM-zK-e5s"/>
                 <outlet property="vBatteryTemperature" destination="0xn-Ly-yhc" id="PvZ-fF-JYH"/>
-                <outlet property="vBluetooth" destination="BZO-y6-Hbq" id="Ldm-X4-PdI"/>
-                <outlet property="vCamera" destination="Efv-S1-sfb" id="0wF-xZ-tmI"/>
                 <outlet property="vChargeThresholdStart" destination="TYs-Hl-oRb" id="5SD-Ls-toa"/>
                 <outlet property="vChargeThresholdStop" destination="DUq-Wn-qQw" id="rHX-J0-Yc6"/>
                 <outlet property="vClamshellMode" destination="fWe-h7-yii" id="vcg-Yg-d7X"/>
@@ -41,7 +39,6 @@
                 <outlet property="vFanStop" destination="IDX-pC-nEt" id="Wby-GI-i2A"/>
                 <outlet property="vFnKeyRadio" destination="So0-Nv-cHB" id="SOX-xb-H38"/>
                 <outlet property="vFxKeyRadio" destination="TKw-8Y-61F" id="GaD-1g-5iH"/>
-                <outlet property="vGraphics" destination="sb9-CF-7V3" id="doH-V8-XzT"/>
                 <outlet property="vHideCapsLock" destination="0RV-HA-nag" id="5iK-92-Qn7"/>
                 <outlet property="vHideMenubarIcon" destination="E2f-lv-n7y" id="WAb-o1-YJk"/>
                 <outlet property="vMenubarIcon" destination="MLd-yL-06X" id="scx-xB-ii6"/>
@@ -59,8 +56,6 @@
                 <outlet property="vThinkDotSlider" destination="IMC-QI-01L" id="Jhh-3P-USI"/>
                 <outlet property="vVersion" destination="4hU-9e-sdI" id="Lpw-hX-Y1m"/>
                 <outlet property="vView" destination="eaw-hp-JIE" id="ZQQ-rW-VRD"/>
-                <outlet property="vWWAN" destination="alV-ed-O4q" id="gTA-fJ-AsV"/>
-                <outlet property="vWireless" destination="FdO-1A-6lu" id="j6g-Hz-H8M"/>
                 <outlet property="yogaModeCheck" destination="v4R-wB-RHi" id="7We-zz-8M3"/>
             </connections>
         </customObject>
@@ -446,7 +441,7 @@
                                     <rect key="frame" x="10" y="33" width="622" height="306"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="13" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="AkT-Gw-nsH">
+                                        <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="AkT-Gw-nsH">
                                             <rect key="frame" x="17" y="137" width="110" height="166"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -458,7 +453,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-S1-sfb">
+                                                <textField identifier="Camera" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Efv-S1-sfb">
                                                     <rect key="frame" x="-2" y="120" width="51" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="摄像头" id="LFJ-bj-I7e">
                                                         <font key="font" metaFont="system"/>
@@ -466,7 +461,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BZO-y6-Hbq">
+                                                <textField identifier="Bluetooth" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BZO-y6-Hbq">
                                                     <rect key="frame" x="-2" y="90" width="63" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="蓝牙" id="Ify-me-gY7">
                                                         <font key="font" metaFont="system"/>
@@ -474,7 +469,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-1A-6lu">
+                                                <textField identifier="Wireless" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FdO-1A-6lu">
                                                     <rect key="frame" x="-2" y="60" width="56" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="无线" id="eeg-q9-OV1">
                                                         <font key="font" metaFont="system"/>
@@ -482,7 +477,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="alV-ed-O4q">
+                                                <textField identifier="3G" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="alV-ed-O4q">
                                                     <rect key="frame" x="-2" y="30" width="56" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="蜂窝网络" id="NPM-bu-eu9">
                                                         <font key="font" metaFont="system"/>
@@ -490,9 +485,26 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sb9-CF-7V3">
+                                                <textField identifier="Graphics" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sb9-CF-7V3">
                                                     <rect key="frame" x="-2" y="0.0" width="59" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="显卡" id="XDW-hs-xcQ">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="Touchpad" id="capA01">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="触控板" id="capA01c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="HDMI" id="capA02">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="HDMI" id="capA02c">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -516,6 +528,97 @@
                                                 <real value="3.4028234663852886e+38"/>
                                             </customSpacing>
                                         </stackView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="capStackB">
+                                                <rect key="frame" x="133" y="137" width="110" height="166"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <subviews>
+
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="ActiveVGA" id="capB01">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="VGA 输出" id="capB01c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="Touch" id="capB02">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="触摸屏" id="capB02c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="WirelessCoexistence" id="capB03">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="无线共存" id="capB03c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="SuperPerformance" id="capB04">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="超级性能" id="capB04c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="ColourEngine" id="capB05">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="色彩引擎" id="capB05c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="TouchpadOSD" id="capB06">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="触控板 OSD" id="capB06c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="CapsLockOSD" id="capB07">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="大写锁定 OSD" id="capB07c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" identifier="MicOSD" id="capB08">
+                                                    <rect key="frame" x="-2" y="0" width="110" height="16"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="麦克风 OSD" id="capB08c">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
                                         <box fixedFrame="YES" title="电池" translatesAutoresizingMaskIntoConstraints="NO" id="QVc-Df-SWQ">
                                             <rect key="frame" x="235" y="10" width="206" height="292"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -594,7 +697,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMr-xE-gzZ">
-                                                        <rect key="frame" x="18" y="55" width="112" height="16"/>
+                                                        <rect key="frame" x="18" y="55" width="60" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="生产日期" id="SOC-L8-9De">
                                                             <font key="font" metaFont="system"/>
@@ -603,7 +706,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-L2-yxr" userLabel="vMfgDate">
-                                                        <rect key="frame" x="18" y="25" width="150" height="16"/>
+                                                        <rect key="frame" x="118" y="55" width="64" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="未知" id="UKM-cd-rez">
                                                             <font key="font" metaFont="system"/>

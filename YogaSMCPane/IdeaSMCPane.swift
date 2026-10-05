@@ -35,29 +35,23 @@ extension YogaSMCPane {
         vMfgDate.stringValue = dict["Manufacture date"] as? String ?? paneLocalizedString("Unknown")
     }
 
+    // Capability rows are plain labels carrying an Interface Builder
+    // identifier that names the Capability key they stand for, so a row is
+    // added by putting a label in the nib and publishing the key in the
+    // driver -- no outlet and no per-row code.
     func updateIdeaCap(_ dict: NSDictionary) {
-        if let val = dict["Camera"] as? Bool {
-            vCamera.textColor = val ? NSColor.systemGreen : NSColor.systemGray
-        }
-        if let val = dict["Bluetooth"] as? Bool {
-            vBluetooth.textColor = val ? NSColor.systemGreen : NSColor.systemGray
-        }
-        if let val = dict["Wireless"] as? Bool {
-            vWireless.textColor = val ? NSColor.systemGreen : NSColor.systemGray
-        }
-        if let val = dict["3G"] as? Bool {
-            vWWAN.textColor = val ? NSColor.systemGreen : NSColor.systemGray
-        }
-        if let val = dict["Graphics"] as? NSString {
-            vGraphics.toolTip = val as String
-            switch val {
-            case "Intel":
-                vGraphics.textColor = NSColor(red: 0/0xff, green: 0x71/0xff, blue: 0xc5/0xff, alpha: 1)
-            case "ATI", "Intel and ATI":
-                vGraphics.textColor = NSColor(red: 0x97/0xff, green: 0x0a/0xff, blue: 0x1b/0xff, alpha: 1)
-            case "Nvidia", "Intel and Nvidia":
-                vGraphics.textColor = NSColor(red: 0x76/0xff, green: 0xb9/0xff, blue: 0/0xff, alpha: 1)
-            default: break
+        guard let root = ideaViewItem.view else { return }
+        var queue: [NSView] = [root]
+        while let v = queue.popLast() {
+            queue.append(contentsOf: v.subviews)
+            guard let tf = v as? NSTextField,
+                  let key = tf.identifier?.rawValue,
+                  let val = dict[key] else { continue }
+            if let on = val as? Bool {
+                tf.textColor = on ? NSColor.systemGreen : NSColor.systemGray
+            } else if let text = val as? String {
+                tf.toolTip = text
+                tf.textColor = text.hasPrefix("Unknown") ? NSColor.systemGray : NSColor.systemGreen
             }
         }
     }

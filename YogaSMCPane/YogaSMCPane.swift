@@ -83,11 +83,6 @@ class YogaSMCPane: NSPreferencePane {
     @IBOutlet weak var vConservationMode: NSButton!
     @IBOutlet weak var vRapidChargeMode: NSButton!
 
-    @IBOutlet weak var vCamera: NSTextField!
-    @IBOutlet weak var vBluetooth: NSTextField!
-    @IBOutlet weak var vWireless: NSTextField!
-    @IBOutlet weak var vWWAN: NSTextField!
-    @IBOutlet weak var vGraphics: NSTextField!
 
     // Think
 
