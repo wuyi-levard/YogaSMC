@@ -33,7 +33,7 @@ bool IdeaVPC::initVPC() {
     DebugLog(updateSuccess, VPCPrompt, config);
     setProperty(VPCPrompt, config, 32);
 
-    OSDictionary *capabilities = OSDictionary::withCapacity(6);
+    OSDictionary *capabilities = OSDictionary::withCapacity(16);
     OSString *value;
 
     setPropertyBoolean(capabilities, "Bluetooth", (config >> CFG_BT_BIT) & 0x1);
@@ -41,6 +41,24 @@ bool IdeaVPC::initVPC() {
     setPropertyBoolean(capabilities, "Wireless", (config >> CFG_WIFI_BIT) & 0x1);
     setPropertyBoolean(capabilities, "Camera", (config >> CFG_CAMERA_BIT) & 0x1);
     setPropertyBoolean(capabilities, "Touchpad", (config >> CFG_TOUCHPAD_BIT) & 0x1);
+
+    // The remaining single bits of the config word. Multi-bit fields are left
+    // out: their layout is not documented anywhere the driver can rely on.
+    setPropertyBoolean(capabilities, "WirelessCoexistence", (config >> CFG_WIRELESS_COEX_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "Processor", (config >> CFG_PROCESSOR_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "Quiet", (config >> CFG_QUITE_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "Touch", (config >> CFG_TOUCH_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "SuperPerformance", (config >> CFG_SUPER_PERF_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "Underclock", (config >> CFG_UNDERCLOCK_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "DCR", (config >> CFG_DCR_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "HDMI", (config >> CFG_HDMI_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "ActiveVGA", (config >> CFG_ACTIVE_VGA_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "ColourEngine", (config >> CFG_COLOR_ENGINE_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "TouchpadOSD", (config >> CFG_TOUCHPAD_OSD_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "NumLockOSD", (config >> CFG_NUMLK_OSD_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "CapsLockOSD", (config >> CFG_CAPSLK_OSD_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "MicOSD", (config >> CFG_MIC_OSD_BIT) & 0x1);
+    setPropertyBoolean(capabilities, "CameraOSD", (config >> CFG_CAMERA_OSD_BIT) & 0x1);
 
     UInt8 cap_graphics = config >> CFG_GRAPHICS_3BIT & 0x7;
     switch (cap_graphics) {
@@ -564,6 +582,16 @@ bool IdeaVPC::updateBatteryInfo(OSDictionary *bat0, OSDictionary *bat1) {
 #endif
     OSString *value;
     const UInt16 * bdata = reinterpret_cast<const UInt16 *>(data->getBytesNoCopy());
+    // BDC0 (design) and FCC0 (full charge) both carry the same unit-scaling
+    // factor the firmware applies in _BIF, so the absolute numbers stay
+    // unit-ambiguous while their ratio does not.
+    if (bdata[0] != 0 && bdata[1] != 0 && bdata[1] <= bdata[0]) {
+        char wear[8];
+        UInt32 percent = 100 - (UInt32)(((UInt64)bdata[1] * 100) / bdata[0]);
+        snprintf(wear, sizeof(wear), "%u%%", percent);
+        setPropertyString(bat0, "Wear level", wear);
+        DebugLog("Battery 0 wear %s (design %u, full charge %u)", wear, bdata[0], bdata[1]);
+    }
     // B1TM
     if (bdata[7] != 0) {
         SInt16 celsius = bdata[7] - 2731;
