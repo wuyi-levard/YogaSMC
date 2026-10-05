@@ -108,6 +108,15 @@ bool IdeaVPC::exitVPC() {
         workLoop->removeEventSource(brightnessPoller);
     }
     OSSafeReleaseNULL(brightnessPoller);
+
+    if (capabilityPoller) {
+        capabilityPoller->disable();
+        workLoop->removeEventSource(capabilityPoller);
+    }
+    OSSafeReleaseNULL(capabilityPoller);
+    capabilityRetries = 0;
+    capabilityPending = false;
+
     return super::exitVPC();
 }
 
@@ -312,6 +321,44 @@ bool IdeaVPC::initEC() {
     return false;
 }
 
+void IdeaVPC::scheduleCapabilityRetry() {
+    if (capabilityRetries >= CAPABILITY_RETRY_COUNT) {
+        AlwaysLog("Capability re-detection failed after %d attempts", capabilityRetries);
+        return;
+    }
+    capabilityRetries++;
+    capabilityPending = true;
+
+    if (!capabilityPoller) {
+        capabilityPoller = IOTimerEventSource::timerEventSource(this, OSMemberFunctionCast(IOTimerEventSource::Action, this, &IdeaVPC::capabilityAction));
+        if (!capabilityPoller ||
+            workLoop->addEventSource(capabilityPoller) != kIOReturnSuccess) {
+            AlwaysLog("Failed to add capabilityPoller");
+            OSSafeReleaseNULL(capabilityPoller);
+            return;
+        }
+        capabilityPoller->enable();
+    }
+
+    if (capabilityPoller->setTimeoutMS(CAPABILITY_RETRY_INTERVAL) != kIOReturnSuccess)
+        AlwaysLog("Failed to arm capabilityPoller");
+}
+
+void IdeaVPC::capabilityAction(OSObject *owner, IOTimerEventSource *timer) {
+    capabilityPending = false;
+    updateKeyboardCapability();
+    updateBatteryCapability();
+
+    if (capabilityPending || !capabilityPoller)
+        return;
+
+    capabilityPoller->disable();
+    workLoop->removeEventSource(capabilityPoller);
+    OSSafeReleaseNULL(capabilityPoller);
+    capabilityRetries = 0;
+    AlwaysLog("Capability re-detection succeeded");
+}
+
 void IdeaVPC::updateKeyboardCapability() {
     UInt32 kbdState;
     IOReturn ret;
@@ -319,6 +366,7 @@ void IdeaVPC::updateKeyboardCapability() {
     ret = vpc->evaluateInteger(getKeyboardMode, &kbdState);
     if (ret != kIOReturnSuccess) {
         AlwaysLog(toggleError, keyboardPrompt, ret);
+        scheduleCapabilityRetry();
         return;
     }
 
@@ -349,6 +397,7 @@ void IdeaVPC::updateBatteryCapability() {
     ret = vpc->evaluateInteger(getBatteryMode, &batState);
     if (ret != kIOReturnSuccess) {
         AlwaysLog(toggleError, batteryPrompt, ret);
+        scheduleCapabilityRetry();
         return;
     }
 

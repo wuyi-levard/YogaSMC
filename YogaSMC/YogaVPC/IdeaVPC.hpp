@@ -14,6 +14,16 @@
 
 #define BR_POLLING_INTERVAL 2000
 
+/**
+ *  Interval of deferred capability re-detection when EC is not ready at init (in ms)
+ */
+#define CAPABILITY_RETRY_INTERVAL 3000
+
+/**
+ *  Maximum attempts of deferred capability re-detection
+ */
+#define CAPABILITY_RETRY_COUNT 10
+
 // from linux/drivers/platform/x86/ideapad-laptop.c
 
 enum {
@@ -206,6 +216,36 @@ private:
      *  Action for brightness poller
      */
     void brightnessAction(OSObject* owner, IOTimerEventSource* timer);
+
+    /**
+     *  Re-detect capability when EC is not responding during init
+     *
+     *  Some firmware (e.g. Lenovo Ideapad 710S / 潮7000) leaves the EC
+     *  unavailable while the kext is starting, so HALS / GBMD evaluation
+     *  fails and every capability property stays unset, which in turn
+     *  greys out the corresponding options in YogaSMCPane.
+     */
+    IOTimerEventSource* capabilityPoller {nullptr};
+
+    /**
+     *  Attempts of deferred capability re-detection already scheduled
+     */
+    UInt32 capabilityRetries {0};
+
+    /**
+     *  True while a deferred capability re-detection is still needed
+     */
+    bool capabilityPending {false};
+
+    /**
+     *  Schedule a deferred capability re-detection
+     */
+    void scheduleCapabilityRetry();
+
+    /**
+     *  Action for capability poller
+     */
+    void capabilityAction(OSObject* owner, IOTimerEventSource* timer);
 
     /**
      *  Battery conservation mode status
