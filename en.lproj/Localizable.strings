@@ -94,6 +94,17 @@
 "Christmas Day";
 "New Year's Eve";
 
+// Date (lunar calendar, DateHelper.swift)
+"Lunar New Year";
+"Lantern Festival";
+"Dragon Festival";
+"Qixi Festival";
+"Ghost Festival";
+"Mid-Autumn Festival";
+"Double Ninth Festival";
+"Laba Festival";
+"Lunar New Year's Eve";
+
 // RF
 "Bluetooth";
 "BT Discoverable";
@@ -110,8 +121,13 @@
 
 // ThinkFan
 "Auto";
+"Full";
 "Main";
 "ReadFanFail" = "Read fan level failed!";
 "WriteFanFail" = "Write Fan level failed!";
 "Main: %d rpm";
 "Alt: %d rpm";
+
+// Idea control (added in 0d1c4e0)
+"Always On USB";
+"Battery Conservation";

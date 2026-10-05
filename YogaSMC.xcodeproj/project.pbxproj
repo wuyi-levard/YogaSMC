@@ -1041,8 +1041,8 @@
 		6F1C7094251473BB007D1DFC /* YogaSMCPane.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6F1C7096251473BB007D1DFB /* zh-Hans */,
 				6F1C7095251473BB007D1DFC /* Base */,
+				6F1C7096251473BB007D1DFB /* zh-Hans */,
 			);
 			name = YogaSMCPane.xib;
 			sourceTree = "<group>";
@@ -1050,8 +1050,8 @@
 		6F53F83A2564C51F00CC4140 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6F53F83B2564C51F00CC4140 /* zh-Hans */,
 				6F53F8392564C51F00CC4140 /* en */,
+				6F53F83B2564C51F00CC4140 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

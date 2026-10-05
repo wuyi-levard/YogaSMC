@@ -3,9 +3,9 @@
   YogaSMC
 
   Simplified Chinese (zh-Hans) localization.
-  Base language (en) stays untouched in en.lproj/ — this file only adds a
-  translation, so the UI follows the system language and falls back to
-  English on non-Chinese systems.
+  en.lproj/ is the key manifest; this file only adds translations, so the UI
+  follows the system language and falls back to English on non-Chinese
+  systems. Keep the two files key-for-key in sync.
 */
 
 // OSD Warning
@@ -33,14 +33,17 @@
 "TouchPad On" = "开启触控板";
 "Switch Video" = "切换视频输出";
 "Camera" = "摄像头";
-"Mic Mute" = "麦克风静音";
+// en.lproj assigns "" to these six keys, and OSDHelper.showOSD() takes the
+// icon-only branch when the localized string is empty. Mirror that here so
+// Chinese does not show text where English deliberately shows none.
+"Mic Mute" = "";
 "Yoga Mode" = "瑜伽模式";
 "Laptop Mode" = "笔记本模式";
 "Tablet Mode" = "平板模式";
 "Stand Mode" = "立架模式";
 "Tent Mode" = "帐篷模式";
 "FnKey" = "";
-"Caps Lock" = "大写锁定";
+"Caps Lock" = "";
 // Think
 "Sleep" = "睡眠";
 "Second Display" = "副屏显示";
@@ -59,7 +62,7 @@
 "Thermal Control Change" = "温控策略切换";
 "AC Status Change" = "电源状态变化";
 "Backlight Changed" = "背光状态变化";
-"FnLock" = " Fn 锁定";
+"FnLock" = "Fn 锁定";
 "Palm Detected" = "检测到掌托";
 "Palm Undetected" = "掌托离开";
 "Thermal Changed" = "温度变化";
@@ -93,13 +96,24 @@
 "Thanksgiving" = "感恩节";
 "Christmas Eve" = "平安夜";
 "Christmas Day" = "圣诞节";
-"New Year's Eve" = "除夕";
+"New Year's Eve" = "跨年夜";
+
+// Date (lunar calendar, DateHelper.swift)
+"Lunar New Year" = "春节";
+"Lantern Festival" = "元宵节";
+"Dragon Festival" = "端午节";
+"Qixi Festival" = "七夕";
+"Ghost Festival" = "中元节";
+"Mid-Autumn Festival" = "中秋节";
+"Double Ninth Festival" = "重阳节";
+"Laba Festival" = "腊八节";
+"Lunar New Year's Eve" = "除夕";
 
 // RF
 "Bluetooth" = "蓝牙";
 "BT Discoverable" = "蓝牙可被发现";
-"Wireless" = "无线网络";
-"Airplane Mode" = "飞行模式";
+"Wireless" = "";
+"Airplane Mode" = "";
 
 // Audio
 "Mic" = "麦克风";
@@ -111,6 +125,7 @@
 
 // ThinkFan
 "Auto" = "自动";
+"Full" = "全速";
 "Main" = "主风扇";
 "ReadFanFail" = "读取风扇转速失败！";
 "WriteFanFail" = "写入风扇转速失败！";

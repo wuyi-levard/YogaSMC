@@ -692,7 +692,7 @@
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rV3-S9-Wio">
                                                                 <rect key="frame" x="65" y="0.0" width="37" height="16"/>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="常亮" id="ukC-KT-yAA">
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="呼吸" id="ukC-KT-yAA">
                                                                     <font key="font" metaFont="system"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -749,7 +749,7 @@
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="F3g-W9-NIA">
                                                                 <rect key="frame" x="65" y="0.0" width="37" height="16"/>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="常亮" id="pzI-A5-78m">
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="呼吸" id="pzI-A5-78m">
                                                                     <font key="font" metaFont="system"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -806,7 +806,7 @@
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Df5-CV-qXh">
                                                                 <rect key="frame" x="65" y="0.0" width="37" height="16"/>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="常亮" id="t2L-Nk-3Kg">
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="呼吸" id="t2L-Nk-3Kg">
                                                                     <font key="font" metaFont="system"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -863,7 +863,7 @@
                                                             </textField>
                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iv9-ws-cPo">
                                                                 <rect key="frame" x="65" y="0.0" width="37" height="16"/>
-                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="常亮" id="Gxs-xD-cOy">
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="呼吸" id="Gxs-xD-cOy">
                                                                     <font key="font" metaFont="system"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
