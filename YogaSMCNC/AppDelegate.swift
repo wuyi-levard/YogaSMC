@@ -175,13 +175,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             return
         }
 
-        guard let props = getProperties(conf.service) else {
+        guard var props = getProperties(conf.service) else {
             if #available(macOS 10.12, *) {
                 os_log("YogaSMC unavailable", type: .error)
             }
             showOSD("YogaSMC Unavailable", duration: 2000)
             NSApp.terminate(nil)
             return
+        }
+
+        // The EC may be unresponsive while the driver starts, leaving every
+        // capability property unpublished. Ask the driver to re-detect once.
+        if self.IOClass == "IdeaVPC", !isAvailable("PrimeKeyType", props) {
+            if #available(macOS 10.12, *) {
+                os_log("Idea capability unavailable, re-detecting", type: .info)
+            }
+            if let reloaded = reloadCapability(conf.service) {
+                props = reloaded
+            }
         }
 
         guard conf.connect != 0 else {
@@ -199,7 +210,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
         loadConfig()
 
-        initMenu(props["VersionInfo"] as? String ?? NSLocalizedString("Unknown Version", comment: ""))
+        initMenu(props["VersionInfo"] as? String ?? NSLocalizedString("Unknown Version", comment: ""), props)
         initNotification(props["EC Capability"] as? String)
 
         capslockState = GetCurrentKeyModifiers() & UInt32(alphaLock) != 0
@@ -217,7 +228,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     // MARK: - Configuration
 
-    func initMenu(_ version: String) {
+    func initMenu(_ version: String, _ props: NSDictionary) {
         if hide {
             if #available(macOS 10.12, *) {
                 os_log("Icon hidden", type: .info)
@@ -263,6 +274,62 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         let pref = NSMenuItem(title: prefPrompt, action: #selector(openPrefpane), keyEquivalent: "p")
         appMenu.insertItem(NSMenuItem.separator(), at: 6)
         appMenu.insertItem(pref, at: 7)
+
+        if IOClass == "IdeaVPC" {
+            initIdeaMenu(props, at: 8)
+        }
+    }
+
+    // MARK: - Idea controls
+
+    /// Insert the IdeaVPC toggles the driver actually supports.
+    ///
+    /// Mirrors YogaSMCPane so FnLock / Always-On USB / Conservation mode can be
+    /// flipped straight from the menu bar instead of only from the CLI.
+    func initIdeaMenu(_ props: NSDictionary, at index: Int) {
+        let toggles: [(String, String, Selector)] = [
+            ("FnlockMode", NSLocalizedString("FnLock", comment: ""), #selector(toggleFnLock(_:))),
+            ("AlwaysOnUSBMode", NSLocalizedString("Always On USB", comment: ""), #selector(toggleAlwaysOnUSB(_:))),
+            ("ConservationMode", NSLocalizedString("Battery Conservation", comment: ""), #selector(toggleConservation(_:)))
+        ]
+
+        var at = index
+        for (key, title, action) in toggles where isAvailable(key, props) {
+            let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
+            item.target = self
+            item.state = getBoolean(key, conf.service) ? .on : .off
+            appMenu.insertItem(item, at: at)
+            at += 1
+        }
+
+        if at > index {
+            appMenu.insertItem(NSMenuItem.separator(), at: at)
+        }
+    }
+
+    @objc func toggleFnLock(_ sender: NSMenuItem) {
+        toggleIdea("FnlockMode", sender)
+    }
+
+    @objc func toggleAlwaysOnUSB(_ sender: NSMenuItem) {
+        toggleIdea("AlwaysOnUSBMode", sender)
+    }
+
+    @objc func toggleConservation(_ sender: NSMenuItem) {
+        toggleIdea("ConservationMode", sender)
+    }
+
+    /// Write the new value, then resync the checkmark with what the driver reports.
+    private func toggleIdea(_ key: String, _ sender: NSMenuItem) {
+        let value = sender.state != .on
+        guard sendBoolean(key, value, conf.service) else {
+            sender.state = getBoolean(key, conf.service) ? .on : .off
+            if #available(macOS 10.12, *) {
+                os_log("Failed to toggle %s", type: .error, key)
+            }
+            return
+        }
+        sender.state = value ? .on : .off
     }
 
     func initNotification(_ ECCap: String?) {

@@ -65,30 +65,30 @@ extension YogaSMCPane {
     func updateIdea(_ props: NSDictionary) {
         if let val = props["PrimeKeyType"] as? NSString {
             vFnKeyRadio.title = val as String
-            if let val = props["FnlockMode"] as? Bool {
+            if isAvailable("FnlockMode", props), let val = props["FnlockMode"] as? Bool {
                 vFnKeyRadio.isEnabled = true
                 vFxKeyRadio.isEnabled = true
-                if val {
-                    vFnKeyRadio.state = .on
-                } else {
-                    vFxKeyRadio.state = .on
-                }
+                vFnKeyRadio.state = val ? .on : .off
+                vFxKeyRadio.state = val ? .off : .on
+            } else {
+                vFnKeyRadio.isEnabled = false
+                vFxKeyRadio.isEnabled = false
             }
         } else {
             vFnKeyRadio.title = "Unknown"
         }
 
-        if let val = props["AlwaysOnUSBMode"] as? Bool {
+        if isAvailable("AlwaysOnUSBMode", props), let val = props["AlwaysOnUSBMode"] as? Bool {
             vAlwaysOnUSBMode.state = val ? .on : .off
             vAlwaysOnUSBMode.isEnabled = true
         }
 
-        if let val = props["ConservationMode"] as? Bool {
+        if isAvailable("ConservationMode", props), let val = props["ConservationMode"] as? Bool {
             vConservationMode.state = val ? .on : .off
             vConservationMode.isEnabled = true
         }
 
-        if let val = props["RapidChargeMode"] as? Bool {
+        if isAvailable("RapidChargeMode", props), let val = props["RapidChargeMode"] as? Bool {
             vRapidChargeMode.state = val ? .on : .off
             vRapidChargeMode.isEnabled = true
         }

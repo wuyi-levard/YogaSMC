@@ -135,7 +135,7 @@ class YogaSMCPane: NSPreferencePane {
     override func willSelect() {
         guard service != 0, sendBoolean("Update", true, service) else { return }
 
-        guard let props = getProperties(service) else {
+        guard var props = getProperties(service) else {
             if #available(macOS 10.12, *) {
                 os_log("Unable to acquire driver properties!", type: .fault)
             }
@@ -158,6 +158,17 @@ class YogaSMCPane: NSPreferencePane {
                 os_log("Unable to identify EC capability!", type: .fault)
             }
             return
+        }
+
+        // The EC may be unresponsive while the driver starts, leaving every
+        // capability property unpublished. Ask the driver to re-detect once.
+        if props["IOClass"] as? NSString == "IdeaVPC", !isAvailable("PrimeKeyType", props) {
+            if #available(macOS 10.12, *) {
+                os_log("Idea capability unavailable, re-detecting", type: .info)
+            }
+            if let reloaded = reloadCapability(service) {
+                props = reloaded
+            }
         }
 
         updateMain(props)
