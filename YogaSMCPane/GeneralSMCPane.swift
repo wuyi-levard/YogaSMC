@@ -86,12 +86,12 @@ extension YogaSMCPane {
            let subver = dict["SubRevision"] as? NSNumber {
             vDYTCRevision.stringValue = "\(ver.intValue).\(subver.intValue)"
         } else {
-            vDYTCRevision.stringValue = "Unknown"
+            vDYTCRevision.stringValue = paneLocalizedString("Unknown")
         }
         if let funcMode = dict["FuncMode"] as? String {
             vDYTCFuncMode.stringValue = funcMode
         } else {
-            vDYTCFuncMode.stringValue = "Unknown"
+            vDYTCFuncMode.stringValue = paneLocalizedString("Unknown")
         }
         if let capabilities = dict["Function Status"] as? NSDictionary {
             let hasMMC = (capabilities["MMC"] != nil)
@@ -176,7 +176,7 @@ extension YogaSMCPane {
         if let dict = props["DYTC"]  as? NSDictionary {
             updateDYTC(dict)
         } else {
-            vDYTCRevision.stringValue = "Unsupported"
+            vDYTCRevision.stringValue = paneLocalizedString("Unsupported")
         }
 
         if defaults.bool(forKey: "HideIcon") {

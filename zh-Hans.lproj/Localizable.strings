@@ -84,6 +84,10 @@
 "Backlight" = "背光";
 "EventVar" = "事件 ";
 
+// Pane status
+"Unknown" = "未知";
+"Unsupported" = "不支持";
+
 // Helper
 "OpenFail" = "无法打开 ";
 

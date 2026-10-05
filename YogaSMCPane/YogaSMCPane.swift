@@ -16,6 +16,15 @@ let DYTCCommand = ["L", "M", "H"]
 let thinkLEDCommand = [0, 0x80, 0xA0, 0xC0]
 let thinkBatteryName = ["BAT_ANY", "BAT_PRIMARY", "BAT_SECONDARY"]
 
+// A preference pane is loaded into another process, so NSLocalizedString()'s
+// Bundle.main would be the host's bundle and would never find this bundle's
+// Localizable.strings.
+let paneBundle = Bundle(for: YogaSMCPane.self)
+
+func paneLocalizedString(_ key: String) -> String {
+    paneBundle.localizedString(forKey: key, value: key, table: nil)
+}
+
 class YogaSMCPane: NSPreferencePane {
     let service = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("YogaVPC"))
     let defaults = UserDefaults(suiteName: "org.zhen.YogaSMC")!
@@ -212,7 +221,7 @@ class YogaSMCPane: NSPreferencePane {
                 mainTabView.removeTabViewItem(thinkViewItem)
             }
         default:
-            vClass.stringValue = "Unsupported"
+            vClass.stringValue = paneLocalizedString("Unsupported")
             if ideaAlive {
                 mainTabView.removeTabViewItem(ideaViewItem)
             }

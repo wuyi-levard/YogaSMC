@@ -80,6 +80,10 @@
 "Backlight";
 "EventVar" = "Event ";
 
+// Pane status
+"Unknown";
+"Unsupported";
+
 // Helper
 "OpenFail" = "Failed to open ";
 

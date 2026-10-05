@@ -29,10 +29,10 @@ extension YogaSMCPane {
     }
 
     func updateIdeaBattery(_ dict: NSDictionary) {
-        vBatteryID.stringValue = dict["ID"] as? String ?? "Unknown"
-        vCycleCount.stringValue = dict["Cycle count"] as? String ?? "Unknown"
-        vBatteryTemperature.stringValue = dict["Temperature"] as? String ?? "Unknown"
-        vMfgDate.stringValue = dict["Manufacture date"] as? String ?? "Unknown"
+        vBatteryID.stringValue = dict["ID"] as? String ?? paneLocalizedString("Unknown")
+        vCycleCount.stringValue = dict["Cycle count"] as? String ?? paneLocalizedString("Unknown")
+        vBatteryTemperature.stringValue = dict["Temperature"] as? String ?? paneLocalizedString("Unknown")
+        vMfgDate.stringValue = dict["Manufacture date"] as? String ?? paneLocalizedString("Unknown")
     }
 
     func updateIdeaCap(_ dict: NSDictionary) {
@@ -75,7 +75,7 @@ extension YogaSMCPane {
                 vFxKeyRadio.isEnabled = false
             }
         } else {
-            vFnKeyRadio.title = "Unknown"
+            vFnKeyRadio.title = paneLocalizedString("Unknown")
         }
 
         if isAvailable("AlwaysOnUSBMode", props), let val = props["AlwaysOnUSBMode"] as? Bool {
