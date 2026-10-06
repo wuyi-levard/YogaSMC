@@ -571,6 +571,12 @@ OSData *IdeaVPC::extractBatteryInfo(UInt32 index) {
     IOReturn ret = vpc->evaluateObject(getBatteryInfo, &result, params, 1);
     params[0]->release();
 
+    if (ret != kIOReturnSuccess)
+        // Some firmware declares GSBI with no arguments at all; the indexed
+        // form is then rejected outright and every battery detail silently
+        // came back empty. Retry the argument-less form.
+        ret = vpc->evaluateObject(getBatteryInfo, &result);
+
     if (ret == kIOReturnSuccess) {
         if ((data = OSDynamicCast(OSData, result))) {
             if (reinterpret_cast<const UInt64*>(data->getBytesNoCopy())[0] != 0) {
