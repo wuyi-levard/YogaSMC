@@ -187,6 +187,7 @@ private:
     static constexpr const char *setBatteryMode       = "SBMC";
     static constexpr const char *getKeyboardMode      = "HALS";
     static constexpr const char *setKeyboardMode      = "SALS";
+    static constexpr const char *getThermalLevels     = "DBSL";
     static constexpr const char *readVPCStatus        = "VPCR";
     static constexpr const char *writeVPCStatus       = "VPCW";
 
@@ -200,6 +201,12 @@ private:
      *  Always on USB mode capability, will be update on init
      */
     bool alwaysOnUSBCap {false};
+
+    /**
+     *  Firmware without GBID answers every battery-ID read with an error, so
+     *  latch the absence once instead of logging it on every refresh.
+     */
+    bool batteryIDSupported {true};
 
     /**
      *  Always on USB mode status

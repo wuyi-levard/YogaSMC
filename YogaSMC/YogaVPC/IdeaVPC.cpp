@@ -91,6 +91,15 @@ bool IdeaVPC::initVPC() {
     setProperty("Capability", capabilities);
     capabilities->release();
 
+    // DBSL returns a package of firmware constants, so reading it never
+    // touches the EC. Publish it raw: what the levels mean is not documented
+    // anywhere this driver can rely on.
+    OSObject *levels;
+    if (vpc->evaluateObject(getThermalLevels, &levels) == kIOReturnSuccess) {
+        setProperty("DBSL Levels", levels);
+        levels->release();
+    }
+
     updateKeyboardCapability();
     updateBatteryCapability();
 
@@ -480,9 +489,16 @@ UInt64 extractBatteryID(OSObject *raw) {
 }
 
 bool IdeaVPC::updateBatteryID(OSDictionary *bat0, OSDictionary *bat1) {
+    // Some firmware has no GBID at all; without this latch the failure would
+    // be logged on every refresh, since updateBatteryID() is no longer allowed
+    // to gate the GSBI-based fields.
+    if (!batteryIDSupported)
+        return false;
+
     OSObject *result;
     if (vpc->evaluateObject(getBatteryID, &result) != kIOReturnSuccess) {
-        AlwaysLog(updateFailure, "Battery ID");
+        batteryIDSupported = false;
+        AlwaysLog("Battery ID unavailable, firmware provides no GBID");
         return false;
     }
 #ifdef DEBUG
