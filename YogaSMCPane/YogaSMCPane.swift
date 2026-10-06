@@ -19,6 +19,11 @@ let thinkBatteryName = ["BAT_ANY", "BAT_PRIMARY", "BAT_SECONDARY"]
 // A preference pane is loaded into another process, so NSLocalizedString()'s
 // Bundle.main would be the host's bundle and would never find this bundle's
 // Localizable.strings.
+    // Resolved once per view tree by updateIdeaCap(); the weak root catches a
+    // tab whose views were released and rebuilt.
+    weak var capRoot: NSView?
+    var capRows: [NSTextField] = []
+
 let paneBundle = Bundle(for: YogaSMCPane.self)
 
 func paneLocalizedString(_ key: String) -> String {

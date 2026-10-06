@@ -302,6 +302,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             at += 1
         }
 
+        if let battery = props["Battery 0"] as? NSDictionary,
+           let wear = battery["Wear level"] as? String {
+            let item = NSMenuItem(title: NSLocalizedString("Battery Wear", comment: "") + " " + wear,
+                                  action: nil, keyEquivalent: "")
+            item.isEnabled = false
+            appMenu.insertItem(item, at: at)
+            at += 1
+        }
+
         if at > index {
             appMenu.insertItem(NSMenuItem.separator(), at: at)
         }

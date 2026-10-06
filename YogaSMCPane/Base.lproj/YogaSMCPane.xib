@@ -691,16 +691,16 @@
                                                         </connections>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMr-xE-gzZ">
-                                                        <rect key="frame" x="18" y="55" width="112" height="16"/>
+                                                        <rect key="frame" x="18" y="55" width="60" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Manufacture date" id="SOC-L8-9De">
+                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Mfg date" id="SOC-L8-9De">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5f-L2-yxr" userLabel="vMfgDate">
-                                                        <rect key="frame" x="18" y="25" width="150" height="16"/>
+                                                        <rect key="frame" x="118" y="55" width="64" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" placeholderString="Unknown" id="UKM-cd-rez">
                                                             <font key="font" metaFont="system"/>
@@ -709,7 +709,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rTr-ll-Qx5" userLabel="vID">
-                                                        <rect key="frame" x="38" y="85" width="144" height="16"/>
+                                                        <rect key="frame" x="118" y="85" width="64" height="16"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" placeholderString="Unknown" id="xX7-Jm-ZQs">
                                                             <font key="font" metaFont="system"/>

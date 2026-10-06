@@ -38,15 +38,24 @@ extension YogaSMCPane {
     // Capability rows are plain labels carrying an Interface Builder
     // identifier that names the Capability key they stand for, so a row is
     // added by putting a label in the nib and publishing the key in the
-    // driver -- no outlet and no per-row code.
+    // driver -- no outlet and no per-row code. The row list is resolved once
+    // per view tree; the weak root catches the case where the tab's views are
+    // released and rebuilt.
     func updateIdeaCap(_ dict: NSDictionary) {
         guard let root = ideaViewItem.view else { return }
-        var queue: [NSView] = [root]
-        while let v = queue.popLast() {
-            queue.append(contentsOf: v.subviews)
-            guard let tf = v as? NSTextField,
-                  let key = tf.identifier?.rawValue,
-                  let val = dict[key] else { continue }
+        if capRoot !== root {
+            capRoot = root
+            capRows = []
+            var queue: [NSView] = [root]
+            while let v = queue.popLast() {
+                queue.append(contentsOf: v.subviews)
+                if let tf = v as? NSTextField, tf.identifier?.rawValue != nil {
+                    capRows.append(tf)
+                }
+            }
+        }
+        for tf in capRows {
+            guard let key = tf.identifier?.rawValue, let val = dict[key] else { continue }
             if let on = val as? Bool {
                 tf.textColor = on ? NSColor.systemGreen : NSColor.systemGray
             } else if let text = val as? String {
